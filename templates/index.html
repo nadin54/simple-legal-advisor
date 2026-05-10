@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Legal Advisor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h1>⚖️ Legal Advisor</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active" data-section="dashboard">📊 Dashboard</a></li>
+                <li><a href="#" class="nav-link" data-section="new-case">➕ New Case</a></li>
+                <li><a href="#" class="nav-link" data-section="my-cases">📁 My Cases</a></li>
+                <li><a href="#" class="nav-link" data-section="legal-info">📚 Legal Info</a></li>
+                <li><a href="#" class="nav-link" data-section="settings">⚙️ Settings</a></li>
+            </ul>
+            <div class="disclaimer">
+                <p>⚠️ <strong>Disclaimer:</strong> For educational purposes only. Not a substitute for professional legal advice.</p>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section active">
+                <h2>Welcome to Smart Legal Advisor</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Cases</h3>
+                        <p class="stat-number" id="total-cases">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Open Cases</h3>
+                        <p class="stat-number" id="open-cases">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Closed Cases</h3>
+                        <p class="stat-number" id="closed-cases">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Advice</h3>
+                        <p class="stat-number" id="total-advice">0</p>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <h3>Cases by Category</h3>
+                    <div id="category-chart" class="chart"></div>
+                </div>
+            </section>
+
+            <!-- New Case Section -->
+            <section id="new-case" class="section">
+                <h2>Create New Case</h2>
+                <form id="case-form" class="form">
+                    <div class="form-group">
+                        <label>Case Title</label>
+                        <input type="text" id="case-title" required placeholder="Enter case title">
+                    </div>
+                    <div class="form-group">
+                        <label>Case Description</label>
+                        <textarea id="case-description" required placeholder="Describe your legal issue..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Predicted Category</label>
+                        <div class="prediction-box">
+                            <p id="predicted-category">Type description to predict category...</p>
+                            <p id="confidence-score"></p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Priority</label>
+                        <select id="case-priority">
+                            <option value="Low">Low</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="High">High</option>
+                            <option value="Urgent">Urgent</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Case</button>
+                </form>
+            </section>
+
+            <!-- My Cases Section -->
+            <section id="my-cases" class="section">
+                <h2>My Cases</h2>
+                <div class="search-box">
+                    <input type="text" id="search-cases" placeholder="Search cases...">
+                </div>
+                <div id="cases-list" class="cases-grid"></div>
+            </section>
+
+            <!-- Legal Info Section -->
+            <section id="legal-info" class="section">
+                <h2>Legal Information</h2>
+                <div class="categories-grid" id="categories-grid"></div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="section">
+                <h2>Settings</h2>
+                <div class="settings-container">
+                    <div class="setting-item">
+                        <h3>About</h3>
+                        <p>Smart Legal Advisor v1.0</p>
+                        <p>An AI-powered legal guidance system</p>
+                    </div>
+                    <div class="setting-item">
+                        <h3>Support</h3>
+                        <p>For issues and questions, please contact support.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Case Modal -->
+    <div id="case-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Case Details</h2>
+            <div id="case-details"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
